@@ -9,7 +9,7 @@ SENDER_EMAIL = os.getenv('SENDER_EMAIL')
 APP_PASSWORD = os.getenv('APP_PASSWORD')
 RECIPIENT_EMAIL = os.getenv('RECIPIENT_EMAIL')
 SUBJECT = 'نظام متخصص لإدارة الهالك في مصانع الرخام | Specialized System for Marble Waste Management'
-HTML_FILE_PATH = 'professional_email_template_inline.html'
+HTML_FILE_PATH = 'email_with_icons.html'
 
 # --- 1. Read the HTML Content ---
 try:

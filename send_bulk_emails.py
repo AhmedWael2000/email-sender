@@ -57,26 +57,14 @@ try:
             
             # Replace Arabic greeting placeholder
             personalized_html = personalized_html.replace(
-                'تحية طيبة [السيد/ة...],',
-                f'تحية طيبة {arabic_name},'
-            )
-            
-            # Replace Arabic "To:" field
-            personalized_html = personalized_html.replace(
-                '<strong>إلى:</strong> [الاسم/المسمى الوظيفي للشخص المعني - مثال: مدير العمليات، المدير\n                                العام]\n                            </p>',
-                f'<strong>إلى:</strong> {arabic_name}\n                            </p>'
+                'السادة المحترمين / مديري مصنع ...',
+                f'السادة المحترمين / مديري {arabic_name},'
             )
             
             # Replace English greeting
             personalized_html = personalized_html.replace(
-                'Dear [Mr./Ms. ...],',
-                f'Dear {english_name},'
-            )
-            
-            # Replace English "To:" field
-            personalized_html = personalized_html.replace(
-                '<strong>To:</strong> [Name/Job Title of the Concerned Person - Example:\n                                            Operations Manager, General Manager]\n                                        </p>',
-                f'<strong>To:</strong> {english_name}\n                                        </p>'
+                'Dear Respected Factory Managers / ....',
+                f'Dear Respected Factory Managers / {english_name},'
             )
             
             # --- 4. Create the Email ---

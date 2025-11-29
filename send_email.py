@@ -8,7 +8,7 @@ load_dotenv()
 SENDER_EMAIL = os.getenv('SENDER_EMAIL')
 APP_PASSWORD = os.getenv('APP_PASSWORD')
 RECIPIENT_EMAIL = os.getenv('RECIPIENT_EMAIL')
-SUBJECT = 'نظام متخصص لإدارة الهالك في مصانع الرخام | Specialized System for Marble Waste Management'
+SUBJECT = 'نظام متخصص لإدارة مصنعك للرخام و الجرانيت | Specialized System for Your Marble and Granite Factory Management'
 HTML_FILE_PATH = 'email_with_icons.html'
 
 # --- 1. Read the HTML Content ---

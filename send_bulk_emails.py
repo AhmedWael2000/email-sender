@@ -15,9 +15,9 @@ APP_PASSWORD = os.getenv('APP_PASSWORD_TOP_SOFTWARE')
 SMTP_SERVER = os.getenv('SMTP_SERVER')
 SMTP_PORT = int(os.getenv('SMTP_PORT'))
 
-SUBJECT = 'نظام متخصص لإدارة مصنعك للرخام و الجرانيت | Specialized System for Your Marble and Granite Factory Management'
-HTML_TEMPLATE_PATH = 'email_with_icons.html'
-CSV_FILE_PATH = 'Marble Factories.csv'
+SUBJECT = os.getenv('SUBJECT')
+HTML_TEMPLATE_PATH = os.getenv('HTML_TEMPLATE_PATH')
+CSV_FILE_PATH = os.getenv('CSV_FILE_PATH')
 
 # --- 1. Read the HTML Template ---
 try:

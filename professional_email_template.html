@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام متخصص لإدارة الهالك في مصانع الرخام</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            line-height: 1.7;
+        }
+
+        .email-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e63946 0%, #d62839 100%);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #e63946 0%, #2f4fbe 50%, #e63946 100%);
+        }
+
+        .logo-container {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            display: block;
+        }
+
+        .header h1 {
+            font-family: 'Tajawal', sans-serif;
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.3px;
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(230, 57, 70, 0.9), transparent);
+            color: white;
+            text-align: center;
+        }
+
+        .hero-overlay h2 {
+            font-family: 'Tajawal', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .content {
+            padding: 40px 30px;
+            position: relative;
+        }
+
+        .content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: url('https://i.postimg.cc/Qt2k0Gdq/pattern-bg.jpg') center/cover;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .content>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        .greeting {
+            color: #2f4fbe;
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section p {
+            color: #333333;
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-align: justify;
+            line-height: 1.8;
+        }
+
+        .section-title {
+            font-family: 'Tajawal', sans-serif;
+            color: #e63946;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2f4fbe;
+            text-align: center;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            color: #333333;
+            font-size: 15.5px;
+            margin-bottom: 25px;
+            padding-right: 80px;
+            position: relative;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            line-height: 1.7;
+        }
+
+        .feature-icon {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 30px 0;
+            border-right: 4px solid #e63946;
+        }
+
+        .cta-section p {
+            color: #2f4fbe;
+            font-size: 16.5px;
+            font-weight: 500;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2f4fbe 0%, #1e3a8a 100%);
+            padding: 30px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .footer p {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .signature {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .signature p {
+            color: #666666;
+            font-size: 15px;
+            margin: 5px 0;
+        }
+
+        .signature strong {
+            color: #e63946;
+            font-weight: 600;
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent 0%, #e63946 50%, transparent 100%);
+            margin: 40px 0;
+        }
+
+        .attachment-note {
+            background: #fff3cd;
+            border-right: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .attachment-note p {
+            color: #856404;
+            font-size: 14.5px;
+            margin: 0;
+        }
+
+        /* English Section Styles */
+        .english-section {
+            direction: ltr;
+            text-align: left;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 3px solid #e9ecef;
+        }
+
+        .english-section h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .english-section .greeting {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .english-section .features-list li {
+            padding-right: 0;
+            padding-left: 80px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .english-section .feature-icon {
+            right: auto;
+            left: 0;
+        }
+
+        .english-section .cta-section {
+            border-right: none;
+            border-left: 4px solid #e63946;
+        }
+
+        .english-section .cta-section p {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .english-section .attachment-note {
+            border-right: none;
+            border-left: 4px solid #ffc107;
+        }
+
+        .english-section .signature {
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .content {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 21px;
+            }
+
+            .section-title {
+                font-size: 19px;
+            }
+
+            .hero-image {
+                height: 200px;
+            }
+
+            .features-list li {
+                padding-right: 70px;
+                font-size: 15px;
+            }
+
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <!-- Header with Logo -->
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://i.postimg.cc/0QTdcRyJ/logo.png" alt="Company Logo" class="logo">
+            </div>
+            <h1>نظام متخصص لإدارة الهالك في مصانع الرخام</h1>
+        </div>
+
+        <!-- Hero Image Section -->
+        <div class="hero-section">
+            <img src="https://i.postimg.cc/Y9Gz6qM9/hero-image.jpg" alt="Marble Factory Operations" class="hero-image">
+            <div class="hero-overlay">
+                <h2>حلول ذكية لمصانع الرخام الحديثة</h2>
+            </div>
+        </div>
+
+        <!-- Arabic Content -->
+        <div class="content">
+            <div class="greeting">
+                تحية طيبة [السيد/ة...],
+            </div>
+
+            <div class="section">
+                <p>
+                    <strong>إلى:</strong> [الاسم/المسمى الوظيفي للشخص المعني - مثال: مدير العمليات، المدير العام]
+                </p>
+                <p>
+                    بصفتكم منشأة رائدة في مجال صناعة الرخام والجرانيت في المملكة العربية السعودية، ندرك تماماً التحديات
+                    التشغيلية التي تواجهونها، لا سيما ما يتعلق بالإدارة المعقدة للمخزون وحساب نسبة الهالك بدقة عالية.
+                </p>
+                <p>
+                    ولهذا السبب، يسعدنا أن نقدم لكم <strong style="color: #e63946;">نظام إدارة مصانع وتجارة الرخام
+                        والجرانيت</strong>، وهو حل متكامل تم تطويره بخبرة ميدانية تتجاوز <strong
+                        style="color: #2f4fbe;">10 سنوات</strong>، ليوفر لكم رؤية واضحة ويحقق النتائج التالية:
+                </p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">أبرز مزايا نظامنا المتخصص</h2>
+
+                <ul class="features-list">
+                    <li>
+                        <img src="https://i.postimg.cc/ydMXv48R/icon-waste.jpg" alt="إدارة الهالك" class="feature-icon">
+                        <span><strong>إدارة الهالك بدقة:</strong> نظام احتساب دقيق للهالك في جميع مراحل التصنيع (قص،
+                            تفصيل،
+                            تشغيل، شحن)، مع تنبيه الإدارة عند تجاوز الحدود الطبيعية، وتوزيع تكلفة الهالك على الأمتار
+                            السليمة.</span>
+                    </li>
+                    <li>
+                        <img src="https://i.postimg.cc/hjkbpWtz/icon-inventory.jpg" alt="المخزون المتخصص"
+                            class="feature-icon">
+                        <span><strong>المخزون المتخصص:</strong> إدارة المخزون بناءً على تصنيف الخامات (بلوكات، ألواح،
+                            بلاطات)،
+                            مع التحويل التلقائي بينها وتتبع الألواح بالباركود والصور.</span>
+                    </li>
+                    <li>
+                        <img src="https://i.postimg.cc/zBsS0ZGH/icon-compliance.jpg" alt="التوافق السعودي"
+                            class="feature-icon">
+                        <span><strong>التوافق في السعودية:</strong> النظام متكامل بشكل كامل مع متطلبات الفوترة
+                            الإلكترونية
+                            ZATCA لضمان سير أعمالكم في المملكة بسلاسة.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="attachment-note">
+                <p>
+                    <strong>📎 مرفق:</strong> نرجو التكرم بالاطلاع على العرض الفني المرفق (عرض فني احترافي.docx) الذي
+                    يوضح تفاصيل جميع المزايا التقنية والمتخصصة التي تغطي دورة العمل كاملة من البلوك إلى المنتج النهائي.
+                </p>
+            </div>
+
+            <div class="cta-section">
+                <p>
+                    <strong>📞 دعوة للتواصل:</strong> هل يمكن تحديد موعد لمكالمة سريعة مدتها 15 دقيقة الأسبوع المقبل
+                    لمناقشة كيف يمكن لنظامنا تقليل الهالك ورفع الإنتاجية في مصنعكم؟
+                </p>
+            </div>
+
+            <div class="signature">
+                <p><strong>مع خالص التقدير،</strong></p>
+                <p>[اسم مندوب البيع]</p>
+                <p>[المسمى الوظيفي]</p>
+                <p>[رقم الهاتف المحمول]</p>
+                <p style="color: #e63946; font-weight: 600;">[اسم شركتك]</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- English Translation Section -->
+            <div class="english-section">
+                <div class="greeting">
+                    Dear [Mr./Ms. ...],
+                </div>
+
+                <div class="section">
+                    <p>
+                        <strong>To:</strong> [Name/Job Title of the Concerned Person - Example: Operations Manager,
+                        General Manager]
+                    </p>
+                    <p>
+                        <strong>Subject:</strong> Specialized Waste Management System for Marble Factories (Cost
+                        Savings)
+                    </p>
+                    <p>
+                        As a leading establishment in the marble and granite industry in the Kingdom of Saudi Arabia, we
+                        fully understand the operational challenges you face, particularly regarding complex inventory
+                        management and accurate waste calculation.
+                    </p>
+                    <p>
+                        For this reason, we are pleased to present our <strong style="color: #e63946;">Marble and
+                            Granite Factory and Trade Management System</strong>, a comprehensive solution developed
+                        with over <strong style="color: #2f4fbe;">10 years</strong> of field experience, providing you
+                        with clear visibility and achieving the following results:
+                    </p>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Key Features of Our Specialized System</h2>
+
+                    <ul class="features-list">
+                        <li>
+                            <img src="https://i.postimg.cc/ydMXv48R/icon-waste.jpg" alt="Waste Management"
+                                class="feature-icon">
+                            <span><strong>Accurate Waste Management:</strong> Precise waste calculation system across
+                                all
+                                manufacturing stages (cutting, detailing, processing, shipping), with management alerts
+                                when
+                                exceeding natural limits, and waste cost distribution across sound meters.</span>
+                        </li>
+                        <li>
+                            <img src="https://i.postimg.cc/hjkbpWtz/icon-inventory.jpg" alt="Inventory Management"
+                                class="feature-icon">
+                            <span><strong>Specialized Inventory:</strong> Inventory management based on material
+                                classification (blocks, slabs, tiles), with automatic conversion between them and slab
+                                tracking via barcode and images.</span>
+                        </li>
+                        <li>
+                            <img src="https://i.postimg.cc/zBsS0ZGH/icon-compliance.jpg" alt="Saudi Compliance"
+                                class="feature-icon">
+                            <span><strong>Saudi Compliance:</strong> The system is fully integrated with ZATCA
+                                e-invoicing
+                                requirements to ensure smooth business operations in the Kingdom.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="attachment-note">
+                    <p>
+                        <strong>📎 Attachment:</strong> Please review the attached technical proposal (عرض فني
+                        احترافي.docx) which explains in detail all the technical and specialized features that cover the
+                        complete workflow from block to final product.
+                    </p>
+                </div>
+
+                <div class="cta-section">
+                    <p>
+                        <strong>📞 Call to Action:</strong> Could we schedule a quick 15-minute call next week to
+                        discuss how our system can reduce waste and increase productivity in your factory?
+                    </p>
+                </div>
+
+                <div class="signature">
+                    <p><strong>Best Regards,</strong></p>
+                    <p>[Sales Representative Name]</p>
+                    <p>[Job Title]</p>
+                    <p>[Mobile Phone Number]</p>
+                    <p style="color: #e63946; font-weight: 600;">[Your Company Name]</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p style="margin: 0; font-size: 14px;">
+                This email contains confidential information intended only for the addressee.
+            </p>
+            <p style="margin: 5px 0 0 0; font-size: 12px; opacity: 0.8;">
+                © 2025 [Your Company Name]. All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

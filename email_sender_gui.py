@@ -24,7 +24,7 @@ class EmailSenderGUI:
         self.app_password = tk.StringVar()
         self.smtp_server = tk.StringVar(value="top-software.net")
         self.smtp_port = tk.StringVar(value="465")
-        self.email_subject = tk.StringVar(value="Important Message")
+        self.email_subject = tk.StringVar(value="Specialized System for Your Marble and Granite Factory Management")
         
         self.is_sending = False
         

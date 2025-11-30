@@ -57,14 +57,14 @@ try:
             
             # Replace Arabic greeting placeholder
             personalized_html = personalized_html.replace(
-                'السادة المحترمين / مديري مصنع ...',
-                f'السادة المحترمين / مديري {arabic_name},'
+                '[Arabic Name]',
+                f'{arabic_name},'
             )
             
             # Replace English greeting
             personalized_html = personalized_html.replace(
-                'Dear Respected Factory Managers / ....',
-                f'Dear Respected Factory Managers / {english_name},'
+                '[English Name]',
+                f'{english_name},'
             )
             
             # --- 4. Create the Email ---

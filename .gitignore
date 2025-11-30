@@ -1,2 +1,52 @@
+# Environment and sensitive data
 .env
+*.env
+.env.local
+
+# Python cache
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+
+# Distribution / packaging
+*.egg-info/
+.eggs/
+*.egg
+
+# Test files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+
+# Icon source files (keep only .ico)
+email_icon.png

@@ -22,7 +22,7 @@ class EmailSenderGUI:
         self.csv_file_path = tk.StringVar()
         self.sender_email = tk.StringVar()
         self.app_password = tk.StringVar()
-        self.smtp_server = tk.StringVar(value="top-software.net")
+        self.smtp_server = tk.StringVar(value="smtp.gmail.com")
         self.smtp_port = tk.StringVar(value="465")
         self.email_subject = tk.StringVar(value="Specialized System for Your Marble and Granite Factory Management")
         

@@ -20,6 +20,7 @@ class EmailSenderGUI:
         # Variables
         self.html_template_path = tk.StringVar()
         self.csv_file_path = tk.StringVar()
+        self.sender_name = tk.StringVar(value="Top Software")
         self.sender_email = tk.StringVar()
         self.app_password = tk.StringVar()
         self.smtp_server = tk.StringVar(value="smtp.gmail.com")
@@ -47,7 +48,9 @@ class EmailSenderGUI:
                             key = key.strip()
                             value = value.strip().strip('"').strip("'")
                             
-                            if key == 'SENDER_EMAIL_TOP_SOFTWARE':
+                            if key == 'SENDER_NAME':
+                                self.sender_name.set(value)
+                            elif key == 'SENDER_EMAIL_TOP_SOFTWARE':
                                 self.sender_email.set(value)
                             elif key == 'APP_PASSWORD_TOP_SOFTWARE':
                                 self.app_password.set(value)
@@ -93,26 +96,30 @@ class EmailSenderGUI:
         config_frame = ttk.LabelFrame(main_frame, text="Email Configuration", padding="10")
         config_frame.pack(fill=tk.X, pady=(0, 15))
         
+        # Sender Name
+        ttk.Label(config_frame, text="Sender Name:").grid(row=0, column=0, sticky=tk.W, pady=5)
+        ttk.Entry(config_frame, textvariable=self.sender_name, width=50).grid(row=0, column=1, columnspan=2, padx=5, sticky=tk.W)
+        
         # Sender Email
-        ttk.Label(config_frame, text="Sender Email:").grid(row=0, column=0, sticky=tk.W, pady=5)
-        ttk.Entry(config_frame, textvariable=self.sender_email, width=50).grid(row=0, column=1, columnspan=2, padx=5, sticky=tk.W)
+        ttk.Label(config_frame, text="Sender Email:").grid(row=1, column=0, sticky=tk.W, pady=5)
+        ttk.Entry(config_frame, textvariable=self.sender_email, width=50).grid(row=1, column=1, columnspan=2, padx=5, sticky=tk.W)
         
         # App Password
-        ttk.Label(config_frame, text="App Password:").grid(row=1, column=0, sticky=tk.W, pady=5)
+        ttk.Label(config_frame, text="App Password:").grid(row=2, column=0, sticky=tk.W, pady=5)
         password_entry = ttk.Entry(config_frame, textvariable=self.app_password, width=50, show="*")
-        password_entry.grid(row=1, column=1, columnspan=2, padx=5, sticky=tk.W)
+        password_entry.grid(row=2, column=1, columnspan=2, padx=5, sticky=tk.W)
         
         # SMTP Server
-        ttk.Label(config_frame, text="SMTP Server:").grid(row=2, column=0, sticky=tk.W, pady=5)
-        ttk.Entry(config_frame, textvariable=self.smtp_server, width=30).grid(row=2, column=1, padx=5, sticky=tk.W)
+        ttk.Label(config_frame, text="SMTP Server:").grid(row=3, column=0, sticky=tk.W, pady=5)
+        ttk.Entry(config_frame, textvariable=self.smtp_server, width=30).grid(row=3, column=1, padx=5, sticky=tk.W)
         
         # SMTP Port
-        ttk.Label(config_frame, text="SMTP Port:").grid(row=2, column=2, sticky=tk.W, pady=5, padx=(20, 0))
-        ttk.Entry(config_frame, textvariable=self.smtp_port, width=10).grid(row=2, column=3, padx=5, sticky=tk.W)
+        ttk.Label(config_frame, text="SMTP Port:").grid(row=3, column=2, sticky=tk.W, pady=5, padx=(20, 0))
+        ttk.Entry(config_frame, textvariable=self.smtp_port, width=10).grid(row=3, column=3, padx=5, sticky=tk.W)
         
         # Email Subject
-        ttk.Label(config_frame, text="Email Subject:").grid(row=3, column=0, sticky=tk.W, pady=5)
-        ttk.Entry(config_frame, textvariable=self.email_subject, width=50).grid(row=3, column=1, columnspan=2, padx=5, sticky=tk.W)
+        ttk.Label(config_frame, text="Email Subject:").grid(row=4, column=0, sticky=tk.W, pady=5)
+        ttk.Entry(config_frame, textvariable=self.email_subject, width=50).grid(row=4, column=1, columnspan=2, padx=5, sticky=tk.W)
         
         # Progress Section
         progress_frame = ttk.LabelFrame(main_frame, text="Progress", padding="10")
@@ -198,6 +205,10 @@ class EmailSenderGUI:
         
         if not self.csv_file_path.get():
             messagebox.showerror("Error", "Please select a CSV file")
+            return False
+        
+        if not self.sender_name.get():
+            messagebox.showerror("Error", "Please enter sender name")
             return False
         
         if not self.sender_email.get():
@@ -316,7 +327,8 @@ class EmailSenderGUI:
                     
                     # Create email
                     msg = MIMEMultipart('alternative')
-                    msg['From'] = self.sender_email.get()
+                    # Format sender as "Name <email@example.com>"
+                    msg['From'] = f'"{self.sender_name.get()}" <{self.sender_email.get()}>'
                     msg['To'] = recipient_email
                     msg['Subject'] = self.email_subject.get()
                     

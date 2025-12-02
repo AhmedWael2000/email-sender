@@ -14,13 +14,13 @@ class EmailSenderGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Bulk Email Sender")
-        self.root.geometry("800x700")
+        self.root.geometry("800x750")
         self.root.resizable(False, False)
         
         # Variables
         self.html_template_path = tk.StringVar()
         self.csv_file_path = tk.StringVar()
-        self.sender_name = tk.StringVar(value="Top Software")
+        self.sender_name = tk.StringVar(value="Farouk")
         self.sender_email = tk.StringVar()
         self.app_password = tk.StringVar()
         self.smtp_server = tk.StringVar(value="smtp.gmail.com")
